@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.paging {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-item a {
+  padding: 8px;
+}
+
+.form-control {
+  width: 400px;
+  border-radius: 0;
+}
+.page-link {
+  cursor: pointer;
+}

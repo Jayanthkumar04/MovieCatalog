@@ -1,0 +1,27 @@
+<app-menu
+  [totalResults]="totalResults"
+  (currPage)="currPage($event)"
+  (searchItem)="searchItem($event)"
+  (search)="getListBySearch()"
+  (searchCategory)="searchByCategory($event)"
+>
+</app-menu>
+<table>
+  <thead>
+    <th></th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Type</th>
+  </thead>
+
+  <tbody *ngFor="let l of list">
+    <td style="text-align: center">
+      <img src="{{ l.Poster }}" alt="poster" height="100px" />
+    </td>
+    <td>{{ l.Title }}</td>
+    <td>{{ l.Year }}</td>
+    <td>
+      <button class="btn btn-primary">{{ l.Type }}</button>
+    </td>
+  </tbody>
+</table>

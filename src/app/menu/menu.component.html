@@ -1,0 +1,89 @@
+<section>
+  <div class="paging">
+    <div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" (click)="changePage(-3)">Previous</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="goTo(page)">{{ page }}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="goTo(page + 1)">{{ page + 1 }}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="goTo(page + 2)">{{ page + 2 }}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="changePage(3)">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div>
+      Showing{{ pageNo * 10 - 9 }} - {{ pageNo * 10 }} of {{ totalResults }}
+    </div>
+  </div>
+
+  <div class="search">
+    <div class="input-group mb-3">
+      <form
+        id="addSessionForm"
+        #formSubmit="ngForm"
+        (ngSubmit)="onSubmit(formSubmit)"
+      >
+        <input
+          type="text"
+          class="form-control mx-1"
+          placeholder="search for movies,series,episodes"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          id="searchItem"
+          ngModel
+          #searchItem="ngModel"
+          name="searchItem"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit">
+            Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="searchByCategory('all')"
+      >
+        Any
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="searchByCategory('movie')"
+      >
+        Movie
+      </button>
+      <button
+        type="button"
+        class="btn btn-warning"
+        (click)="searchByCategory('series')"
+      >
+        Series
+      </button>
+      <button
+        type="button"
+        class="btn btn-info"
+        (click)="searchByCategory('episode')"
+      >
+        episode
+      </button>
+    </div>
+  </div>
+</section>
