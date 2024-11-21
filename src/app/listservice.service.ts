@@ -37,10 +37,15 @@ export class ListserviceService {
       );
   }
 
-  searchByCategory(cat: string, search: string) {
+  searchByCategory(cat: string, search: string, page: number) {
     return this.http
       .get<OmdbResponse>(
-        `https://www.omdbapi.com/?s=${search}&type=${cat}&apikey=10c22b1d`
+        `https://www.omdbapi.com/?s=${search}&type=${cat}&apikey=10c22b1d`,
+        {
+          params: {
+            page: page,
+          },
+        }
       )
       .pipe(
         map((response) => {

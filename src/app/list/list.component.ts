@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   totalResults: number = 1;
   currentPage: number = 1;
   search: string = 'america';
-  category: string = '';
+  category: string = 'all';
   getListBySearch() {
     this.listService.getListBySearch(this.search, this.currentPage).subscribe({
       next: (data) => {
@@ -40,7 +40,11 @@ export class ListComponent implements OnInit {
 
   currPage(n: number) {
     this.currentPage = n;
-    this.getListBySearch();
+    if (this.category === 'all') {
+      this.getListBySearch();
+    } else {
+      this.searchByCategory(this.category);
+    }
     console.log(n);
   }
 
@@ -51,11 +55,17 @@ export class ListComponent implements OnInit {
 
   searchByCategory(cat: string) {
     this.category = cat;
-    this.listService.searchByCategory(cat, this.search).subscribe({
-      next: (data) => {
-        this.list = data.movies;
-        this.totalResults = data.totalResults;
-      },
-    });
+    if (cat === 'all') {
+      this.getListBySearch();
+      return;
+    }
+    this.listService
+      .searchByCategory(cat, this.search, this.currentPage)
+      .subscribe({
+        next: (data) => {
+          this.list = data.movies;
+          this.totalResults = data.totalResults;
+        },
+      });
   }
 }

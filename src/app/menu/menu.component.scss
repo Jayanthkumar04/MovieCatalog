@@ -23,3 +23,9 @@ section {
 .page-link {
   cursor: pointer;
 }
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  width: 600px;
+}
